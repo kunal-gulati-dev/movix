@@ -29,27 +29,30 @@ const HeroBanner = () => {
 
   return (
       <div className="heroBanner">
-          <div className="backdrop-img">
-              <Img src={backGround} />
-          </div>
-          <div className="wrapper">
-              <div className="heroBannerContent">
-                  <span className="title">Welcome.</span>
-                  <span className="subTitle">
-                      Millions of movies, TV shows and people to discover.
-                      Explore now.
-                  </span>
-                  <div className="searchInput">
-                      <input
-                          type="text"
-                          placeholder="Search for a move or a tv show..."
-                          onKeyUp={searchQueryHandler}
-                          onChange={(e) => setQuery(e.target.value)}
-                      />
-                      <button>Search</button>
-                  </div>
-              </div>
-          </div>
+            {!loading && 
+                <div className="backdrop-img">
+                    <Img src={backGround} />
+                </div>
+            }
+            <div className="opacity-layer"></div>
+            <ContentWrapper>
+                <div className="heroBannerContent">
+                    <span className="title">Welcome.</span>
+                    <span className="subTitle">
+                        Millions of movies, TV shows and people to discover.
+                        Explore now.
+                    </span>
+                    <div className="searchInput">
+                        <input
+                            type="text"
+                            placeholder="Search for a move or a tv show..."
+                            onKeyUp={searchQueryHandler}
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                        <button>Search</button>
+                    </div>
+                </div>
+            </ContentWrapper>
       </div>
   );
 }

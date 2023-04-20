@@ -18,7 +18,38 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    return <div>Header</div>;
+
+    const openSearch = () => {
+        setMobileMenu(false);
+        setShowSearch(true);
+    }
+
+    const openMobileMenu = () => {
+        setMobileMenu(true)
+        setShowSearch(false)
+    }
+
+
+    return (
+        <header className="header">
+            <ContentWrapper>
+                <div className="logo">
+                    <img src={logo} alt="" />
+                </div>
+                <ul className="menuItems">
+                    <li className="menuItem">Movies</li>
+                    <li className="menuItem">TV Shows</li>
+                    <li className="menuItem">
+                        <HiOutlineSearch />
+                    </li>
+                </ul>
+                <div className="mobileMenuItems">
+                    <HiOutlineSearch />
+                    {mobileMenu ? <VscChromeClose onClick={() => setMobileMenu(false)} /> : <SlMenu onClick={openMobileMenu} />}
+                </div>
+            </ContentWrapper>
+        </header>
+    );
 };
 
 export default Header;
